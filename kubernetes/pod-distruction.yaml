@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app
+  namespace: break-and-fix-ns
+spec:
+  containers:
+  - name: server
+    # image: blux2/hello-server:1.1 <- this image doesn't exist and will cause ImagePullBackOff
+    image: blux2/hello-server:1.0
+    ports:
+    - containerPort: 8080
+    resources:
+      requests:
+        cpu: "100m"
+        memory: "200Mi"
+      limits:
+        cpu: "200m"
+        memory: "400Mi"
