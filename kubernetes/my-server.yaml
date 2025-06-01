@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app
+  namespace: break-and-fix-ns
+  labels:
+    name: app
+spec:
+  containers:
+  - name: server
+    image: blux2/hello-server:1.0
+    ports:
+    - containerPort: 8080
+    resources:
+      requests:
+        cpu: "100m"
+        memory: "200Mi"
+      limits:
+        cpu: "200m"
+        memory: "400Mi"
