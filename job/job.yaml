@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: date-checker
+spec:
+  template:
+    spec:
+      containers:
+      - name: date
+        image: ubuntu:22.04
+        command: ["date"]
+      - name: fail
+        image: ubuntu:22.04
+        command: ["exit"]
+      restartPolicy: Never
+  backoffLimit: 4
+
