@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hello-server-configmap
+data:
+  myconfig.txt: |-
+    I am hungry too.
