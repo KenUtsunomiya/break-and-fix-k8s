@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: httpserver-readiness
+  labels:
+    app: httpserver
+spec:
+  containers:
+  - name: httpserver
+    image: delayfailserver:1.1
+    readinessProbe:
+      httpGet:
+        path: /healthz
+        port: 8080
+      initialDelaySeconds: 10 # 最初の Probe までの時間
+      periodSeconds: 30 # Probe の間隔
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "250m"
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
